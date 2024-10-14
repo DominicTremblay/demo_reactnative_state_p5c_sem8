@@ -2,6 +2,7 @@ export const personnages = [
   {
     id: 1,
     nom: "Bob l'éponge",
+    avatar_url: require('@assets/images/avatars/spongebob.png'),
     espece: 'Éponge de mer',
     occupation: 'Cuisinier au Crabe Croustillant',
     meilleur_ami: 'Patrick',
@@ -10,6 +11,7 @@ export const personnages = [
   {
     id: 2,
     nom: 'Patrick Étoile',
+    avatar_url: require('@assets/images/avatars/patrickstars.png'),
     espece: 'Étoile de mer',
     occupation: 'Chômeur',
     meilleur_ami: "Bob l'éponge",
@@ -19,6 +21,7 @@ export const personnages = [
   {
     id: 3,
     nom: 'Carlo Tentacule',
+    avatar_url: require('@assets/images/avatars/carlotentacule.png'),
     espece: 'Poulpe',
     occupation: 'Caissier au Crabe Croustillant',
     meilleur_ami: "Aucun (il n'aime pas vraiment ses voisins)",
@@ -27,6 +30,7 @@ export const personnages = [
   {
     id: 4,
     nom: 'Sandy Écureuil',
+    avatar_url: require('@assets/images/avatars/sandycheeks.png'),
     espece: 'Écureuil',
     occupation: 'Scientifique et experte en karaté',
     meilleur_ami: "Bob l'éponge",
@@ -35,6 +39,7 @@ export const personnages = [
   {
     id: 5,
     nom: 'Eugène Krabs',
+    avatar_url: require('@assets/images/avatars/mrkrabs.png'),
     espece: 'Crabe',
     occupation: 'Propriétaire du Crabe Croustillant',
     meilleur_ami: "L'argent",
@@ -43,9 +48,10 @@ export const personnages = [
   {
     id: 6,
     nom: 'Sheldon Plankton',
+    avatar_url: require('@assets/images/avatars/sheldonplancton.png'),
     espece: 'Copépode',
     occupation: "Propriétaire du Seau de l'Enfer",
     meilleur_ami: 'Karen (son ordinateur)',
     phrase_culte: 'Je vais enfin voler la recette secrète du pâté de crabe !',
   },
-];
+]
