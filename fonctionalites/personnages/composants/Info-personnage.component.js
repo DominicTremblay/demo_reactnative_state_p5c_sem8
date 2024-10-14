@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Image } from 'react-native'
 import { Avatar, Button, Card, Text, List } from 'react-native-paper'
+import { tailles } from '../../../utils/tailles'
 
 const InfoPersonnage = ({ personnage } = {}) => {
   const {
@@ -52,17 +53,17 @@ const InfoPersonnage = ({ personnage } = {}) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: 'white',
-    margin: 10,
+    margin: tailles.xxxsm,
   },
   avatar: {
-    width: 60,
-    height: 60,
+    width: tailles.sm,
+    height: tailles.sm,
   },
   item: {
     flexDirection: 'row',
   },
   label: {
-    width: 100,
+    width: tailles.lg,
   },
 })
 
