@@ -1,4 +1,4 @@
-export const personnages = [
+export const listePersonnages = [
   {
     id: 1,
     nom: "Bob l'éponge",
