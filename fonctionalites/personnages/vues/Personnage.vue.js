@@ -3,20 +3,13 @@ import React from 'react'
 import { StyleSheet, View, StatusBar, SafeAreaView } from 'react-native'
 import InfoPersonnage from '../composants/Info-personnage.component'
 import { Searchbar } from 'react-native-paper'
+import AjoutPersonnage from '../composants/Ajout-personnage.component'
 
-const VuePersonnage = ({ personnages }) => {
-  // const listePersonnages = personnages.map((perso) => (
-  //   <CartePersonnage
-  //     key={perso.id}
-  //     nom={perso.nom}
-  //     espece={perso.espece}
-  //     occupation={perso.occupation}
-  //     meilleurAmi={perso.meilleur_ami}
-  //     phraseCulte={perso.phrase_culte}
-  //   />
-  // ))
+const VuePersonnage = ({ personnages, ajouterPersonnage }) => {
 
-  const [perso] = personnages
+ 
+
+  const perso = personnages[personnages.length - 1]
 
   return (
     <SafeAreaView style={styles.container}>
@@ -26,6 +19,7 @@ const VuePersonnage = ({ personnages }) => {
       <View style={styles.list}>
         <InfoPersonnage personnage={perso} />
       </View>
+      <AjoutPersonnage ajouterPersonnage={ajouterPersonnage} />
     </SafeAreaView>
   )
 }
