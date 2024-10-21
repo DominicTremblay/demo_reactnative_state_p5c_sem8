@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar'
 import PersonnageVue from './fonctionalites/personnages/vues/Personnage.vue'
 import { listePersonnages } from './data/personnages'
 import { Provider as PaperProvider } from 'react-native-paper'
-
+import { dataReducer, AJOUTER_PERSO, MODIF_PERSO, EFFACER_PERSO } from './reducers/dataReducer'
 
 
 export default function App() {
-  const [personnages, setPersonnages] = useState(listePersonnages)
+  const [state, dispatch] = useReducer(dataReducer, {
+    personnages: listePersonnages,
+  })
 
   const ajouterPersonnage = ({
     nom,
@@ -27,7 +29,7 @@ export default function App() {
     }
 
     // ajouter le personnage a l'etat
-    setPersonnages((etatCourant) => [...etatCourant, nouvPerso])
+    dispatch({ type: AJOUTER_PERSO, payload: nouvPerso })
   }
 
   const modifierPersonnage = ({
@@ -46,62 +48,21 @@ export default function App() {
       phrase_culte: phraseCulte,
     }
 
-    console.log(persoMAJ)
-    console.log({ id })
-    // PArcourir la liste de personnages
-    // si c'est meme id > le remplacer pour persoMAJ
-    // map : parcourir les elements de la liste un par un et appliquer une transformation sur chacun
-    // si c'est le meme id on change le perso, sinon on le laisse intacte
-
-    const nouvListePersonnages = personnages.map((perso) => {
-      if (perso.id === id) {
-        return persoMAJ
-      }
-      return perso
+    dispatch({
+      type: MODIF_PERSO,
+      payload: {
+        id,
+        persoMAJ,
+      },
     })
-
-    // const nouvListePersonnages = []
-
-    // for (let perso of listePersonnages) {
-    //   console.log('PersoId:', perso.id, 'id:', id)
-
-    //   if (perso.id === id) {
-    //     console.log('meme Id')
-    //     nouvListePersonnages.push(persoMAJ)
-    //   } else {
-    //     nouvListePersonnages.push(perso)
-    //   }
-    // }
-
-    // mettre a jour l'etat
-
-    setPersonnages(() => nouvListePersonnages)
-  }
-
-  const effacerPersonnage = (id) => {
-    // Effacer le personnage de la liste avec l'id correspondant
-
-    const nouvListePersonnages = personnages.filter((perso) => perso.id != id)
-
-    // const nouvListePersonnages = []
-
-    // for (let perso of personnages) {
-    //   if (perso.id != id) {
-    //     nouvListePersonnages.push(perso)
-    //   }
-    // }
-
-    // mettre a jour l'etat
-
-    setPersonnages(() => nouvListePersonnages)
   }
 
   return (
     <PaperProvider>
       <PersonnageVue
-        personnages={personnages}
+        personnages={state.personnages}
         ajouterPersonnage={ajouterPersonnage}
-        effacerPersonnage={effacerPersonnage}
+        dispatch={dispatch}
         modifierPersonnage={modifierPersonnage}
       />
       <ExpoStatusBar style="auto" />

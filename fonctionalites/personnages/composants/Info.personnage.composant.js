@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Image } from 'react-native'
 import { Card, Text, Menu, IconButton } from 'react-native-paper'
+import { EFFACER_PERSO } from '../../../reducers/dataReducer'
 
-const InfoPersonnage = ({ personnage, effacerPersonnage, setAction }) => {
+const InfoPersonnage = ({ personnage, dispatch, setAction }) => {
   const [visible, setVisible] = useState(false)
 
   const {
@@ -21,16 +22,14 @@ const InfoPersonnage = ({ personnage, effacerPersonnage, setAction }) => {
   const gererMiseAJour = () => {
     console.log('MAJ')
     setAction(() => 'modifier')
-    fermerMenu();
+    fermerMenu()
   }
 
   const gererEffacer = () => {
     console.log('Effacer')
-    effacerPersonnage(id)
-    fermerMenu();
+    dispatch({ type: EFFACER_PERSO, payload: { id } })
+    fermerMenu()
   }
-
-
 
   const LeftContent = () => <Image source={avatarUrl} style={styles.avatar} />
 

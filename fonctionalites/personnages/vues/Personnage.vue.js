@@ -8,7 +8,7 @@ import ModifierPersonnage from '../composants/Modifier.personnage.composant copy
 const PersonnageVue = ({
   personnages,
   ajouterPersonnage,
-  effacerPersonnage,
+  dispatch,
   modifierPersonnage,
 }) => {
   const [action, setAction] = useState('ajouter')
@@ -20,7 +20,7 @@ const PersonnageVue = ({
       </View>
       <InfoPersonnage
         personnage={personnages[personnages.length - 1]}
-        effacerPersonnage={effacerPersonnage}
+        dispatch={dispatch}
         setAction={setAction}
       />
 
